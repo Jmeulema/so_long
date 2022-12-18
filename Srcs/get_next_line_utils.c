@@ -5,87 +5,116 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/30 15:15:07 by jmeulema          #+#    #+#             */
-/*   Updated: 2022/11/14 13:15:03 by jmeulema         ###   ########.fr       */
+/*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
+/*   Updated: 2022/12/18 16:23:26 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_free_gnl(char **p)
+/*
+** free's a given pointer and set's it to NULL
+*/
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	free(*p);
+	*p = NULL;
 }
 
-void	ft_bzero(void *s, size_t n)
-{
-	size_t	i;
-	char	*p;
-
-	i = 0;
-	p = (char *)s;
-	while (i < n)
-	{
-		p[i] = '\0';
-		i++;
-	}
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	void	*result;
-
-	result = malloc(sizeof(void) * count * size);
-	if (!result)
-		return (NULL);
-	ft_bzero(result, count * size);
-	return (result);
-}
-
-char	*ft_strchr(const char *s, int c)
+int	ft_strlen_gnl(char *s)
+/*
+** returns length of a string until '\0'
+** if the string is NULL return is 0
+*/
 {
 	int	i;
 
 	i = 0;
-	while (s[i])
+	if (s == NULL)
+		return (0);
+	while (s && s[i])
 	{
-		if ((unsigned char)s[i] == (unsigned char)c)
-			return ((char *)&s[i]);
 		i++;
 	}
-	if (!s[i] && !c)
-		return ((char *)&s[i]);
-	return (NULL);
+	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+int	ft_strchr_gnl(char *s, int c, int flag)
+/*
+** finds char c in string s and returns its position as an integer
+** if flag == 1 return is -5 when input string is NULL
+** if flag == 0 return is -1 when input string is NULL
+*/
 {
-	size_t	i;
-	size_t	j;
-	char	*str;
+	int	i;
 
-	if (!s1 || !s2)
-		return (NULL);
-	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!str)
-		return (NULL);
+	if (flag == 1 && s == NULL)
+		return (-5);
 	i = 0;
-	j = 0;
-	while (s1[i])
+	while (s && s[i])
 	{
-		str[i] = s1[i];
+		if (s[i] == c)
+			return (i);
 		i++;
 	}
-	while (s2[j])
+	return (-1);
+}
+
+char	*ft_strnjoin_gnl(char *s1, char *s2, int n)
+/*
+** joins two strings
+** first string does not have o exist
+** only n characters of the second string get copied
+** output is a allocated string
+*/
+{
+	char	*output;
+	int		i;
+	int		i2;
+
+	i = 0;
+	i2 = 0;
+	if (s2[i2] == '\0')
+		return (NULL);
+	output = malloc(ft_strlen_gnl(s1) + n + 1);
+	if (output == NULL)
+		return (NULL);
+	if (s1 != NULL)
 	{
-		str[i + j] = s2[j];
-		j++;
+		while (s1[i] != '\0')
+		{
+			output[i] = s1[i];
+			i++;
+		}
 	}
-	str[i + j] = '\0';
-	return (str);
+	while (s2 && s2[i2] != '\0' && i2 < n)
+		output[i++] = s2[i2++];
+	output[i] = '\0';
+	if (s1)
+		ft_free_gnl(&s1);
+	return (output);
+}
+
+char	*ft_strndup_gnl(char *input, int n)
+/*
+** duplicates n characters from input into output
+** output is a allocated string
+*/
+{
+	char	*output;
+	int		len;
+	int		i;
+
+	i = 0;
+	len = n;
+	output = malloc(len + 1);
+	if (output == NULL)
+		return (NULL);
+	while (input && input[i] != '\0' && i < n)
+	{
+		output[i] = input[i];
+		i++;
+	}
+	output[i] = '\0';
+	return (output);
 }

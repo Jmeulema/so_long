@@ -5,109 +5,110 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/30 15:19:31 by jmeulema          #+#    #+#             */
-/*   Updated: 2022/11/14 13:20:54 by jmeulema         ###   ########.fr       */
+/*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
+/*   Updated: 2022/12/18 16:23:30 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static char	*ft_free(char *stash, char *buffer)
+void	*ft_calloc_gnl(size_t nelem, size_t elsize)
+/*
+** standard libft function
+*/
 {
-	char	*new_stash;
+	char			*ptr;
+	unsigned int	i;
+	size_t			x;
 
-	new_stash = ft_strjoin(stash, buffer);
-	free(stash);
-	return (new_stash);
+	i = 0;
+	x = nelem * elsize;
+	ptr = (char *)malloc(x);
+	if (ptr == NULL)
+		return (0);
+	while (i < x)
+	{
+		ptr[i] = 0;
+		i++;
+	}
+	return (ptr);
 }
 
-static char	*ft_line(char *stash)
+char	*ft_update_nl_gnl(char **next_line, int position)
+/*
+** updates *next_line to the not returned remainder of *next_line
+*/
+{
+	char	*tmp;
+	int		len;
+
+	len = ft_strlen_gnl(*next_line) - position;
+	tmp = ft_strndup_gnl(*next_line + position, len);
+	ft_free_gnl(next_line);
+	*next_line = tmp;
+	return (*next_line);
+}
+
+char	*ft_output_gnl(char **next_line, int position, int bytes)
+/*
+** error managment in first if statement
+** stores every character of *next_line until '/n' or '/0' into line
+** calls ft_update_nl if '/n' is found
+** line is a allocated string
+*/
 {
 	char	*line;
-	int		i;
 
-	i = 0;
-	if (!stash[i])
+	if (((bytes == 0 || bytes == -1) && *next_line == NULL) || position == -5)
+	{
+		if (*next_line)
+			return (*next_line);
 		return (NULL);
-	while (stash[i] && stash[i] != '\n')
-		i++;
-	line = ft_calloc(i + 2, sizeof(char));
-	i = 0;
-	while (stash[i] && stash[i] != '\n')
-	{
-		line[i] = stash[i];
-		i++;
 	}
-	if (stash[i] && stash[i] == '\n')
-	{
-		line[i] = '\n';
-		i++;
-	}
+	line = NULL;
+	if (position == -1)
+		position = ft_strlen_gnl(*next_line);
+	else
+		position++;
+	line = ft_strndup_gnl(*next_line, position);
+	if (position == ft_strlen_gnl(*next_line))
+		ft_free_gnl(next_line);
+	else
+		*next_line = ft_update_nl_gnl(next_line, position);
 	return (line);
-}
-
-static char	*ft_next(char *stash)
-{
-	int		i;
-	int		j;
-	char	*newline;
-
-	i = 0;
-	while (stash[i] && stash[i] != '\n')
-		i++;
-	if (!stash[i])
-	{
-		free(stash);
-		return (NULL);
-	}
-	newline = ft_calloc(ft_strlen(stash) - i + 1, sizeof(char));
-	i++;
-	j = 0;
-	while (stash[i])
-	{
-		newline[j] = stash[i];
-		i++;
-		j++;
-	}	
-	free(stash);
-	return (newline);
-}
-
-char	*ft_read_file(int fd, char *stash)
-{
-	char	*buffer;
-	int		nbyte;
-
-	if (!stash)
-		stash = ft_calloc(1, 1);
-	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-	nbyte = 1;
-	while (!ft_strchr(buffer, '\n') && nbyte > 0)
-	{
-		nbyte = read(fd, buffer, BUFFER_SIZE);
-		if (nbyte == -1)
-		{
-			free(buffer);
-			return (NULL);
-		}
-		buffer[nbyte] = '\0';
-		stash = ft_free(stash, buffer);
-	}
-	free(buffer);
-	return (stash);
 }
 
 char	*get_next_line(int fd)
+/*
+** reads into buff and hands the whole buff to next_line
+** until '/n' is found, end of file is reached or error in read
+** next_line: stores everything from the past reads that was never returned
+** buff: where read read's to
+** position: stores the position of '/n', will be -1 if no '/n' found and -5 if next_line == NULL
+** bytes: stores the output of read
+*/
 {
-	static char	*stash;
-	char		*line;
+	static char	*next_line;
+	char		*buff;
+	int			position;
+	int			bytes;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (BUFFER_SIZE <= 0 || fd < 0 || fd > 10240)
 		return (NULL);
-	stash = ft_read_file(fd, stash);
-	if (!stash)
-		return (NULL);
-	line = ft_line(stash);
-	stash = ft_next(stash);
-	return (line);
+	buff = NULL;
+	position = ft_strchr_gnl(next_line, '\n', 0);
+	while (position == -1 && position != -5)
+	{
+		buff = ft_calloc_gnl(BUFFER_SIZE + 1, 1);
+		if (buff == NULL)
+			return (NULL);
+		bytes = read(fd, buff, BUFFER_SIZE);
+		if (bytes == 0 || bytes == -1)
+			break ;
+		next_line = ft_strnjoin_gnl(next_line, buff, bytes);
+		position = ft_strchr_gnl(next_line, '\n', 1);
+		ft_free_gnl(&buff);
+	}
+	ft_free_gnl(&buff);
+	return (ft_output_gnl(&next_line, position, bytes));
 }

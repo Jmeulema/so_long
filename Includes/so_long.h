@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2022/11/16 14:38:59 by jmeulema         ###   ########.fr       */
+/*   Updated: 2022/12/18 16:30:12 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,32 @@ typedef struct s_data
 
 /* get_next_line */
 
-size_t		ft_strlen(const char *s);
-void		ft_bzero(void *s, size_t n);
-void		*ft_calloc(size_t count, size_t size);
-char		*ft_strchr(const char *s, int c);
-char		*ft_strjoin(char const *s1, char const *s2);
-char		*ft_read_file(int fd, char *stash);
+// size_t		ft_strlen_gnl(const char *s);
+// void		ft_bzero(void *s, size_t n);
+// void		*ft_calloc_gnl(size_t count, size_t size);
+// char		*ft_strchr_gnl(const char *s, int c);
+// char		*ft_strjoin_gnl(char const *s1, char const *s2);
+// char		*ft_read_file(int fd, char *stash);
+// char		*get_next_line(int fd);
+
+void		ft_free_gnl(char **p);
+int			ft_strlen_gnl(char *s);
+int			ft_strchr_gnl(char *s, int c, int flag);
+char		*ft_strnjoin_gnl(char *s1, char *s2, int n);
+char		*ft_strndup_gnl(char *input, int n);
+
+void		*ft_calloc_gnl(size_t nelem, size_t elsize);
+char		*ft_update_nl_gnl(char **next_line, int position);
+char		*ft_output_gnl(char **next_line, int position, int bytes);
 char		*get_next_line(int fd);
 
-/* strncmp */
 
-int			ft_strncmp(const char *s1, const char *s2, size_t n);
+/* so_long_utils2 */
+
+void		*ft_calloc(size_t nelem, size_t elsize);
+char		*ft_strchr(const char *s, int c);
+char		*ft_strjoin(char *s1, const char *s2);
+size_t		ft_strlen(const char *s);
 
 /* so_long_utils */
 

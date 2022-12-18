@@ -5,28 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 14:58:47 by jmeulema          #+#    #+#             */
-/*   Updated: 2022/11/16 14:25:40 by jmeulema         ###   ########.fr       */
+/*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
+/*   Updated: 2022/12/18 16:16:53 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	*ft_strnstr(const char *str, const char *to_find, size_t len)
+int	ft_count_c(char *s, char c)
+/* will count appearances of c inside s and return them as integer */
 {
-	size_t	size;
+	int	i;
+	int	x;
 
-	if (!*to_find)
-		return ((char *)str);
-	size = ft_strlen(to_find);
-	while (*str && len >= size)
+	i = 0;
+	x = 0;
+	if (!s)
+		return (-1);
+	while (s && s[i])
 	{
-		if (*str == *to_find && ft_strncmp(str, to_find, size) == 0)
-			return ((char *)str);
-		str++;
-		len--;
+		if (s[i++] == c)
+			x++;
 	}
-	return (NULL);
+	return (x);
 }
 
 void	exit_error(void)
@@ -36,13 +37,14 @@ void	exit_error(void)
 }
 
 int	ft_count_lines(int fd, int x, int img_w)
+/* returns how many lines the file of fd contains */
 {
 	char	*line;
-	int		nb_lines;
+	int		linecount;
 	int		i;
 
 	i = 0;
-	nb_lines = 1;
+	linecount = 1;
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -57,13 +59,14 @@ int	ft_count_lines(int fd, int x, int img_w)
 		else
 		{
 			free(line);
-			nb_lines++;
+			linecount++;
 		}
 	}
-	return (nb_lines);
+	return (linecount);
 }
 
 int	ft_line_length(int fd)
+/* this function will find the length of the first line in a file */
 {
 	char	buffer[1];
 	int		length;
@@ -83,19 +86,26 @@ int	ft_line_length(int fd)
 	return (length);
 }
 
-int	ft_count_c(char *s, char c)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	int	i;
-	int	x;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
-	x = 0;
-	if (!s)
-		return (-1);
-	while (s && s[i])
+	if (ft_strlen(needle) == 0)
+		return ((char *)haystack);
+	if (len == 0)
+		return (NULL);
+	while (haystack[i] != '\0' && i < len)
 	{
-		if (s[i++] == c)
-			x++;
+		j = 0;
+		while (needle[j] == haystack[i + j] && i + j < len)
+		{
+			if (needle[j + 1] == '\0')
+				return ((char *)haystack + i);
+			j++;
+		}
+		i++;
 	}
-	return (x);
+	return (NULL);
 }

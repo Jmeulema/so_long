@@ -6,7 +6,7 @@
 #    By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#              #
-#    Updated: 2022/11/15 16:22:52 by jmeulema         ###   ########.fr        #
+#    Updated: 2022/12/18 16:26:21 by jmeulema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ INC = \
 			
 SRC = \
 			basic_commands.c \
-			ft_strncmp.c \
 			get_next_line_utils.c \
 			get_next_line.c \
 			init.c \
@@ -35,6 +34,7 @@ SRC = \
 			put_elements.c \
 			so_long.c \
 			so_long_utils.c \
+			so_long_utils2.c \
 			win.c \
 	
 SRCS = $(addprefix $(SRCSDIR)/, $(SRC))

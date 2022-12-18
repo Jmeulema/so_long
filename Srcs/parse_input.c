@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2022/11/16 14:56:25 by jmeulema         ###   ########.fr       */
+/*   Updated: 2022/11/18 13:32:08 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ static void	ft_check_content(t_data *data)
 		data->map->collectables += ft_count_c(data->map->map[y], 'C');
 		y++;
 	}
-	// if (player != 1)
-	// 	ft_map_error("Error\nonly valid map if one player is contained\n");
+	if (player != 1)
+		ft_map_error("Error\nonly valid map if one player is contained\n");
 	if (exit == 0)
 		ft_map_error("Error\nonly valid map if at least one exit is contained\n");
 	if (data->map->collectables == 0)

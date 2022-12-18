@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2022/11/14 14:41:27 by jmeulema         ###   ########.fr       */
+/*   Updated: 2022/12/18 15:25:48 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,23 @@
 void	ft_window_size(t_data *data, char **av)
 {
 	int	fd;
+	int	len;
 
+	len = ft_strlen(av[1]);
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 	{
 		perror("Error\nInvalid map_path/map\n");
 		exit(EXIT_FAILURE);
 	}
-	if (ft_strnstr(av[1], ".ber", ft_strlen(av[1])) == NULL)
+	if (av[1][len - 4] != '.' && av[1][len - 3] != 'b')
 	{
-		printf("Error\nmap is not .ber\n");
+		printf("Error\nmap has to be .ber\n");
+		exit(EXIT_FAILURE);
+	}
+	if (av[1][len - 2] != 'e' && av[1][len - 1] != 'r')
+	{
+		printf("Error\nmap has to be .ber\n");
 		exit(EXIT_FAILURE);
 	}
 	data->size_x = (ft_line_length(fd) * IMG_W);
