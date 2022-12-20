@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2022/12/18 16:26:03 by jmeulema         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:38:09 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,18 +75,4 @@ char	*ft_strjoin(char *s1, const char *s2)
 	free(s1);
 	s1 = NULL;
 	return (c);
-}
-
-size_t	ft_strlen(const char *s)
-/* will return the length of a string
-** will return 0 if the string is empty */
-{
-	int	i;
-
-	i = 0;
-	while (s && s[i])
-	{
-		i++;
-	}
-	return (i);
 }

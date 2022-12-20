@@ -6,7 +6,7 @@
 #    By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#              #
-#    Updated: 2022/12/18 16:26:21 by jmeulema         ###   ########.fr        #
+#    Updated: 2022/12/20 14:37:35 by jmeulema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,7 @@ INC = \
 			
 SRC = \
 			basic_commands.c \
-			get_next_line_utils.c \
-			get_next_line.c \
+			gnl.c \
 			init.c \
 			map.c \
 			move.c \

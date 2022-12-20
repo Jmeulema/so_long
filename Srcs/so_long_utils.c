@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2022/12/18 16:16:53 by jmeulema         ###   ########.fr       */
+/*   Updated: 2022/12/20 15:06:50 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	exit_error(void)
 }
 
 int	ft_count_lines(int fd, int x, int img_w)
-/* returns how many lines the file of fd contains */
 {
 	char	*line;
 	int		linecount;
