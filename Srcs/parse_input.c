@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2022/11/18 13:32:08 by jmeulema         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:57:12 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	ft_check_walls(t_data *data)
 			if (data->map->map[y][x] != '0' && data->map->map[y][x] != '1' &&
 				data->map->map[y][x] != 'C' && data->map->map[y][x] != 'P' &&
 				data->map->map[y][x] != 'E')
-				ft_map_error("Error\nfor map '0','1','C','P','E' are valid\n");
+				ft_map_error("Error\nshould contained '0','1','C','P','E'\n");
 			else if ((y == 0 || x == 0) && data->map->map[y][x] != '1')
 				ft_map_error("Error\nmap has to be surrounded by walls\n");
 			else if ((y == (data->size_y / IMG_H - 1)
@@ -66,8 +66,8 @@ static void	ft_check_content(t_data *data)
 	}
 	if (player != 1)
 		ft_map_error("Error\nonly valid map if one player is contained\n");
-	if (exit == 0)
-		ft_map_error("Error\nonly valid map if at least one exit is contained\n");
+	if (exit != 1)
+		ft_map_error("Error\nonly valid map if one exit is contained\n");
 	if (data->map->collectables == 0)
 		ft_map_error("Error\nonly valid map if at least 1 fruit is contained\n");
 }
