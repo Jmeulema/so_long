@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2022/12/20 15:11:09 by jmeulema         ###   ########.fr       */
+/*   Updated: 2023/02/23 17:31:25 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ void	ft_window_size(t_data *data, char **av)
 	}
 	if (av[1][len - 4] != '.' && av[1][len - 3] != 'b')
 	{
-		printf("Error\nmap has to be .ber\n");
+		ft_putstr("Error\nmap has to be .ber\n");
 		exit(EXIT_FAILURE);
 	}
 	if (av[1][len - 2] != 'e' && av[1][len - 1] != 'r')
 	{
-		printf("Error\nmap has to be .ber\n");
+		ft_putstr("Error\nmap has to be .ber\n");
 		exit(EXIT_FAILURE);
 	}
 	data->size_x = (ft_line_length(fd) * IMG_W);

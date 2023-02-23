@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2022/12/20 16:57:12 by jmeulema         ###   ########.fr       */
+/*   Updated: 2023/02/23 17:29:09 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_map_error(char *error_msg)
 {
-	printf("%s", error_msg);
+	ft_putstr(error_msg);
 	exit(EXIT_FAILURE);
 }
 

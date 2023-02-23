@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2023/02/23 16:20:20 by jmeulema         ###   ########.fr       */
+/*   Updated: 2023/02/23 17:33:48 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int			ft_count_c(char *s, char c);
 void		*ft_calloc(size_t nelem, size_t elsize);
 char		*ft_strchr(const char *s, int c);
 char		*ft_strjoin(char *s1, const char *s2);
+void		ft_putstr(char *s);
 
 /* map */
 
@@ -114,7 +115,7 @@ void		ft_move(t_data *data, char pos, int dir);
 
 /* win */
 
-void		ft_win(t_data *data);
+void		ft_win(void);
 
 /* parse_input */
 

@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2022/12/20 14:38:09 by jmeulema         ###   ########.fr       */
+/*   Updated: 2023/02/23 17:31:45 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,14 @@ char	*ft_strjoin(char *s1, const char *s2)
 	free(s1);
 	s1 = NULL;
 	return (c);
+}
+
+void	ft_putstr(char *s)
+{
+	if (!s)
+		return ;
+	if (s)
+	{
+		write(2, s, ft_strlen(s));
+	}
 }

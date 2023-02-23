@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2023/02/23 17:01:19 by jmeulema         ###   ########.fr       */
+/*   Updated: 2023/02/23 17:35:44 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,13 @@ static void	ft_do_exit_move(t_data *data, char pos, int dir)
 		&& data->collected != data->map->collectables)
 	{
 		data->p_y = data->p_y + 1 * dir;
-		printf("collecte all diamond before leaving");
+		ft_putstr("collecte all devils fruits before leaving\n");
 	}
 	else if (pos == 'x' && data->map->map[data->p_y][data->p_x + 1 * dir] == 'E'
 		&& data->collected != data->map->collectables)
 	{
 		data->p_x = data->p_x + 1 * dir;
-		printf("collecte all diamond before leaving");
+		ft_putstr("collecte all devils fruits before leaving\n");
 	}
 }
 
@@ -94,5 +94,4 @@ void	ft_move(t_data *data, char pos, int dir)
 	if (data->map->map[data->p_y][data->p_x] == 'C')
 		ft_collect(data, pos, dir);
 	mlx_do_sync(data->mlx);
-	printf("You did %d moves.\n", ++data->counter);
 }

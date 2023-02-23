@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2023/02/23 15:35:08 by jmeulema         ###   ########.fr       */
+/*   Updated: 2023/02/23 17:36:39 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_exit(t_data *data)
 {
 	mlx_destroy_window(data->mlx, data->win);
-	printf("you gave up");
+	ft_putstr("you gave up\n");
 	exit(EXIT_SUCCESS);
 }
 
@@ -33,16 +33,10 @@ int	ft_basic_commands(int command, t_data *data)
 		ft_move(data, 'x', RIGHT);
 	if (data->map->map[data->p_y][data->p_x] == 'E')
 	{
-		if (data->collected != data->map->collectables)
-		{
-			printf("ok");
-			return (0);
-		}
+		if (data->collected == data->map->collectables)
+			ft_win();
 		else
-		{
-			printf("ko\n");
-			ft_win(data);
-		}
+			return (0);
 	}
 	return (0);
 }
