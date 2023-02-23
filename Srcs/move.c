@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2022/11/16 14:16:17 by jmeulema         ###   ########.fr       */
+/*   Updated: 2023/02/23 17:01:19 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,24 +45,51 @@ static void	ft_collect(t_data *data, char pos, int dir)
 	ft_player_move(data, pos, dir);
 }
 
-void	ft_move(t_data *data, char pos, int dir)
+static void	ft_do_move(t_data *data, char pos, int dir)
 {
-	mlx_put_image_to_window(data->mlx, data->win, data->img->background,
-		(data->p_x * IMG_W), (data->p_y * IMG_H));
 	if (pos == 'y' && data->map->map[data->p_y + 1 * dir][data->p_x] != '1'
 		&& (data->map->map[data->p_y + 1 * dir][data->p_x] != 'E'
 		|| data->collected == data->map->collectables))
+	{
+		if (data->map->map[data->p_y][data->p_x] == 'E')
+			mlx_put_image_to_window(data->mlx, data->win, data->img->exit,
+				(data->p_x * IMG_W), (data->p_y * IMG_H));
 		data->p_y = data->p_y + 1 * dir;
+	}
 	else if (pos == 'x' && data->map->map[data->p_y][data->p_x + 1 * dir] != '1'
 		&& (data->map->map[data->p_y][data->p_x + 1 * dir] != 'E'
 		|| data->collected == data->map->collectables))
+	{
+		if (data->map->map[data->p_y][data->p_x] == 'E')
+			mlx_put_image_to_window(data->mlx, data->win, data->img->exit,
+				(data->p_x * IMG_W), (data->p_y * IMG_H));
 		data->p_x = data->p_x + 1 * dir;
-	else if (pos == 'y' && data->map->map[data->p_y + 1 * dir][data->p_x] == 'E'
+	}
+}
+
+static void	ft_do_exit_move(t_data *data, char pos, int dir)
+{
+	if (pos == 'y' && data->map->map[data->p_y + 1 * dir][data->p_x] == 'E'
 		&& data->collected != data->map->collectables)
+	{
+		data->p_y = data->p_y + 1 * dir;
 		printf("collecte all diamond before leaving");
+	}
 	else if (pos == 'x' && data->map->map[data->p_y][data->p_x + 1 * dir] == 'E'
 		&& data->collected != data->map->collectables)
+	{
+		data->p_x = data->p_x + 1 * dir;
 		printf("collecte all diamond before leaving");
+	}
+}
+
+void	ft_move(t_data *data, char pos, int dir)
+{
+
+	mlx_put_image_to_window(data->mlx, data->win, data->img->background,
+		(data->p_x * IMG_W), (data->p_y * IMG_H));
+	ft_do_move(data, pos, dir);
+	ft_do_exit_move(data, pos, dir);
 	ft_player_move(data, pos, dir);
 	if (data->map->map[data->p_y][data->p_x] == 'C')
 		ft_collect(data, pos, dir);

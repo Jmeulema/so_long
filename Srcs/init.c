@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2022/11/16 14:07:57 by jmeulema         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:21:50 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ static void	ft_init_next(t_data *data)
 			&img_width, &img_height);
 	relative_path = "./img/background.xpm";
 	data->img->background = mlx_xpm_file_to_image(data->mlx, relative_path,
+			&img_width, &img_height);
+	relative_path = "./img/exit.xpm";
+	data->img->exit = mlx_xpm_file_to_image(data->mlx, relative_path,
 			&img_width, &img_height);
 }
 

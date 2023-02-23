@@ -6,11 +6,18 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2022/11/14 15:01:00 by jmeulema         ###   ########.fr       */
+/*   Updated: 2023/02/23 15:35:08 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	ft_exit(t_data *data)
+{
+	mlx_destroy_window(data->mlx, data->win);
+	printf("you gave up");
+	exit(EXIT_SUCCESS);
+}
 
 int	ft_basic_commands(int command, t_data *data)
 {
@@ -25,6 +32,17 @@ int	ft_basic_commands(int command, t_data *data)
 	else if (command == D)
 		ft_move(data, 'x', RIGHT);
 	if (data->map->map[data->p_y][data->p_x] == 'E')
-		ft_win(data);
+	{
+		if (data->collected != data->map->collectables)
+		{
+			printf("ok");
+			return (0);
+		}
+		else
+		{
+			printf("ko\n");
+			ft_win(data);
+		}
+	}
 	return (0);
 }

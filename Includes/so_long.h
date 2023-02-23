@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2022/12/20 15:10:03 by jmeulema         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:20:20 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_img
 	void	*player_right;
 	void	*player_down;
 	void	*background;
+	void	*exit;
 }							t_img;
 
 typedef struct s_map
@@ -104,6 +105,7 @@ void		ft_put_player(t_data *data);
 
 /* basic_command */
 
+int			ft_exit(t_data *data);
 int			ft_basic_commands(int command, t_data *data);
 
 /* move */
@@ -120,6 +122,5 @@ void		ft_parse_input(t_data *data, char **av, int ac);
 
 /* so_long */
 
-int			ft_exit(t_data *data);
 
 #endif

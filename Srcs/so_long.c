@@ -6,25 +6,19 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:58:47 by jmeulema          #+#    #+#             */
-/*   Updated: 2022/12/20 15:10:51 by jmeulema         ###   ########.fr       */
+/*   Updated: 2023/02/23 15:55:57 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int	ft_exit(t_data *data)
-{
-	mlx_destroy_window(data->mlx, data->win);
-	printf("you gave up");
-	exit(EXIT_SUCCESS);
-}
 
 static int	ft_fill_data(t_data *data)
 {
 	ft_put_background(data);
 	ft_create_map(data);
 	mlx_hook(data->win, 17, 1L << 2, ft_exit, data);
-	mlx_key_hook(data->win, ft_basic_commands, data);
+	mlx_hook(data->win, 2, 0, &ft_basic_commands, data);
+	//mlx_key_hook(data->win, ft_basic_commands, data);
 	return (0);
 }
 
