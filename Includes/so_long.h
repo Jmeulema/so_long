@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2023/02/23 17:33:48 by jmeulema         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:10:44 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@
 # define DOWN 1
 # define LEFT -1
 # define RIGHT 1
+
+typedef struct s_path
+{
+	int		coins;
+	int		exit;
+}				t_path;
 
 typedef struct s_img
 {
@@ -76,13 +82,13 @@ char		*get_next_line(int fd);
 
 /* so_long_utils */
 
-char		*ft_strnstr(const char *str, const char *to_find, size_t len);
+// char		*ft_strnstr(const char *str, const char *to_find, size_t len);
 void		exit_error(void);
 int			ft_count_lines(int fd, int x, int img_w);
 int			ft_line_length(int fd);
 int			ft_count_c(char *s, char c);
 
-/* so_long_utils2 */
+/* utils */
 
 void		*ft_calloc(size_t nelem, size_t elsize);
 char		*ft_strchr(const char *s, int c);
@@ -107,21 +113,29 @@ void		ft_put_player(t_data *data);
 /* basic_command */
 
 int			ft_exit(t_data *data);
+void		ft_win(void);
 int			ft_basic_commands(int command, t_data *data);
 
 /* move */
 
 void		ft_move(t_data *data, char pos, int dir);
 
-/* win */
-
-void		ft_win(void);
-
 /* parse_input */
 
+void		ft_map_error(char *error_msg);
 void		ft_parse_input(t_data *data, char **av, int ac);
 
-/* so_long */
+/* print_nbr */
 
+int			ft_printstr(const char *s1);
+char		*ft_itoa(int n);
+int			ft_printnbr(int nbr);
+
+/* path_checker */
+
+char		**duplicate_map(t_data *data);
+void		ft_path_help(t_path *path, char **map, int y, int x);
+void		ft_path(t_path *path, char **map, int y, int x);
+int			check_paths(t_data *data, int pos_y, int pos_x, int collected);
 
 #endif

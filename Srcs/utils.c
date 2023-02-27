@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_utils2.c                                   :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2023/02/23 17:31:45 by jmeulema         ###   ########.fr       */
+/*   Updated: 2023/02/27 12:19:52 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	*ft_calloc(size_t nelem, size_t elsize)
+void	*ft_calloc(size_t count, size_t size)
 /* mallocs for the size of nelem * elsize and sets everything to NULL*/
 {
 	char			*ptr;
 	unsigned int	i;
 
 	i = 0;
-	ptr = (char *)malloc(nelem * elsize);
+	ptr = (char *)malloc(count * size);
 	if (!ptr)
 		return (NULL);
-	while (i < nelem * elsize)
+	while (i < count * size)
 	{
 		ptr[i] = 0;
 		i++;
@@ -86,3 +86,5 @@ void	ft_putstr(char *s)
 		write(2, s, ft_strlen(s));
 	}
 }
+
+

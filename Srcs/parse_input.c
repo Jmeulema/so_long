@@ -6,13 +6,13 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2023/02/23 17:29:09 by jmeulema         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:10:32 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	ft_map_error(char *error_msg)
+void	ft_map_error(char *error_msg)
 {
 	ft_putstr(error_msg);
 	exit(EXIT_FAILURE);

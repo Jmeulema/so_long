@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2023/02/23 17:35:44 by jmeulema         ###   ########.fr       */
+/*   Updated: 2023/02/27 14:25:51 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,7 @@ void	ft_move(t_data *data, char pos, int dir)
 	if (data->map->map[data->p_y][data->p_x] == 'C')
 		ft_collect(data, pos, dir);
 	mlx_do_sync(data->mlx);
+	ft_putstr("You did ");
+	ft_printnbr(++data->counter);
+	ft_putstr(" moves.\n");
 }

@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2023/02/23 17:36:39 by jmeulema         ###   ########.fr       */
+/*   Updated: 2023/02/27 11:58:56 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@ int	ft_exit(t_data *data)
 {
 	mlx_destroy_window(data->mlx, data->win);
 	ft_putstr("you gave up\n");
+	exit(EXIT_SUCCESS);
+}
+
+void	ft_win(void)
+{
+	ft_putstr("Well done, you finished it\n");
+	ft_putstr("you won!\n");
 	exit(EXIT_SUCCESS);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2023/02/23 17:32:18 by jmeulema         ###   ########.fr       */
+/*   Updated: 2023/02/27 16:00:22 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,7 @@ int	ft_count_lines(int fd, int x, int img_w)
 {
 	char	*line;
 	int		linecount;
-	int		i;
 
-	i = 0;
 	linecount = 1;
 	while (1)
 	{
@@ -83,28 +81,4 @@ int	ft_line_length(int fd)
 			break ;
 	}
 	return (length);
-}
-
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	if (ft_strlen(needle) == 0)
-		return ((char *)haystack);
-	if (len == 0)
-		return (NULL);
-	while (haystack[i] != '\0' && i < len)
-	{
-		j = 0;
-		while (needle[j] == haystack[i + j] && i + j < len)
-		{
-			if (needle[j + 1] == '\0')
-				return ((char *)haystack + i);
-			j++;
-		}
-		i++;
-	}
-	return (NULL);
 }

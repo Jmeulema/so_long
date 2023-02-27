@@ -6,7 +6,7 @@
 #    By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#              #
-#    Updated: 2022/12/20 14:37:35 by jmeulema         ###   ########.fr        #
+#    Updated: 2023/02/27 15:11:45 by jmeulema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,11 +30,13 @@ SRC = \
 			map.c \
 			move.c \
 			parse_input.c \
+			path_checker.c \
 			put_elements.c \
 			so_long.c \
 			so_long_utils.c \
-			so_long_utils2.c \
-			win.c \
+			print_nbr.c \
+			utils.c \
+			
 	
 SRCS = $(addprefix $(SRCSDIR)/, $(SRC))
 OBJS = $(addprefix $(OBJSDIR)/, $(addsuffix .o, $(basename $(SRC))))
