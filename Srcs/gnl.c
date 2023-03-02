@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2022/12/20 15:12:28 by jmeulema         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:41:04 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ size_t	ft_strlen(const char *s)
 	}
 	return (i);
 }
-
 
 char	*ft_strdup(const char *str)
 {

@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2023/02/27 12:19:52 by jmeulema         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:41:41 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,3 @@ void	ft_putstr(char *s)
 		write(2, s, ft_strlen(s));
 	}
 }
-
-

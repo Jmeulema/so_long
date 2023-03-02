@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2023/02/27 16:41:11 by jmeulema         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:41:26 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ int	check_paths(t_data *data, int pos_y, int pos_x, int collectables)
 	dup = duplicate_map(data);
 	path.coins = 0;
 	path.exit = 0;
-
 	ft_path(&path, dup, pos_y, pos_x);
 	pos_y = 0;
 	while (dup[pos_y])

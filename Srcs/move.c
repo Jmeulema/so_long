@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2023/03/02 12:10:36 by jmeulema         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:41:14 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ static void	ft_do_exit_move(t_data *data, char pos, int dir)
 
 void	ft_move(t_data *data, char pos, int dir)
 {
-
 	mlx_put_image_to_window(data->mlx, data->win, data->img->background,
 		(data->p_x * IMG_W), (data->p_y * IMG_H));
 	ft_do_move(data, pos, dir);
