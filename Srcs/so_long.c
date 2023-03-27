@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:58:47 by jmeulema          #+#    #+#             */
-/*   Updated: 2023/02/27 16:36:28 by jmeulema         ###   ########.fr       */
+/*   Updated: 2023/03/27 13:26:44 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int ac, char **av)
 	map.map = ft_calloc(data.size_y + 1, sizeof(char *));
 	if (!map.map)
 	{
-		perror("Error\ncalloc failed\n");
+		perror("Error\nCalloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	ft_init(&data, &map);
@@ -38,7 +38,7 @@ int	main(int ac, char **av)
 	data.mlx = mlx_init();
 	if (!data.mlx)
 	{
-		perror("Error\ninit failed\n");
+		perror("Error\nInit failed\n");
 		exit(EXIT_FAILURE);
 	}
 	data.win = mlx_new_window(data.mlx, data.size_x, data.size_y, "./so_long");
@@ -46,6 +46,6 @@ int	main(int ac, char **av)
 	if (check_paths(&data, data.p_y, data.p_x, data.map->collectables) == 0)
 		ft_map_error("Error\nInvalid map\n");
 	mlx_loop(data.mlx);
-	perror("Error\nloop failed\n");
+	perror("Error\nLoop failed\n");
 	exit(EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2023/02/27 16:00:22 by jmeulema         ###   ########.fr       */
+/*   Updated: 2023/03/27 13:26:28 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_count_c(char *s, char c)
 
 void	exit_error(void)
 {
-	ft_putstr("Error\nwrong map dimensions\n");
+	ft_putstr("Error\nWrong map dimensions\n");
 	exit(EXIT_FAILURE);
 }
 
