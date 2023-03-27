@@ -6,7 +6,7 @@
 /*   By: jmeulema <jmeulema@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:42:28 by jmeulema          #+#    #+#             */
-/*   Updated: 2023/03/27 13:25:30 by jmeulema         ###   ########.fr       */
+/*   Updated: 2023/03/27 13:35:20 by jmeulema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_create_map(t_data *data)
 		else if (data->map->map[data->map->y][data->map->x] == '1')
 			ft_put_objects(data, "./img/wall.xpm");
 		else if (data->map->map[data->map->y][data->map->x] == 'C')
-			ft_put_objects(data, "./img/collectable.xpm");
+			ft_put_objects(data, "./img/collectables.xpm");
 		else if (data->map->map[data->map->y][data->map->x] == 'E')
 			ft_put_objects(data, "./img/exit.xpm");
 		if (data->map->x < (data->size_x / IMG_W))
